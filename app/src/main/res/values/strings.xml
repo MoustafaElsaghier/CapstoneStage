@@ -9,5 +9,11 @@
 
     <string name="sign_up">Sign Up</string>
     <string name="not_user">Not User?</string>
+    <string name="title_activity_sign_up">SignUpActivity</string>
+    <string name="password">Password</string>
+    <string name="username">UserName</string>
+    <string name="email">Email</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="logo_of_application">Logo Of Application</string>
 
 </resources>
