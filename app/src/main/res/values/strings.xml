@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Capstone Stage</string>
+    <string name="action_settings">Settings</string>
+    <string name="name_hint">Name</string>
+    <string name="password_hint">Password</string>
+    <string name="login_txt">Login</string>
+
+    <!-- String Array for Navigation Drawer Items -->
+
+    <string name="sign_up">Sign Up</string>
+    <string name="not_user">Not User?</string>
+
+</resources>
