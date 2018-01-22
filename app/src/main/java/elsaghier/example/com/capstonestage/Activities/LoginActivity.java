@@ -1,10 +1,12 @@
-package elsaghier.example.com.capstonestage;
+package elsaghier.example.com.capstonestage.Activities;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import elsaghier.example.com.capstonestage.R;
 
 public class LoginActivity extends AppCompatActivity {
 

@@ -6,10 +6,10 @@
     android:layout_height="match_parent"
     android:background="@drawable/gradient_bg"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="elsaghier.example.com.capstonestage.LoginActivity"
+    tools:context="elsaghier.example.com.capstonestage.Activities.LoginActivity"
     tools:showIn="@layout/activity_login">
 
-    <elsaghier.example.com.capstonestage.CustomViews.RoundedImageView
+    <ImageView
         android:id="@+id/roundedImageView"
         android:layout_width="150dp"
         android:layout_height="150dp"
