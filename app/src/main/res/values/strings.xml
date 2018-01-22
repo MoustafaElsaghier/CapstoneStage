@@ -15,5 +15,8 @@
     <string name="email">Email</string>
     <string name="confirm_password">Confirm Password</string>
     <string name="logo_of_application">Logo Of Application</string>
+    <string name="lorem_text">Lorem Text</string>
+    <string name="rating">Rating</string>
+    <string name="image_for_item_in_the_list">Image for item in the List</string>
 
 </resources>
