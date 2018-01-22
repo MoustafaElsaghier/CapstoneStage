@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="elsaghier.example.com.capstonestage.HotelDetailsActivityFragment"
-    tools:showIn="@layout/activity_hotel_details">
+    tools:context="elsaghier.example.com.capstonestage.RestaurantsDetailsActivityFragment"
+    tools:showIn="@layout/activity_restaurants_details">
 
     <ImageView
         android:id="@+id/rest_detail_img"
@@ -30,11 +30,11 @@
         app:layout_constraintTop_toTopOf="@+id/rest_detail_img" />
 
     <TextView
-        android:id="@+id/hotel_detail_location"
+        android:id="@+id/rest_detail_location"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="TextView"
+        android:text="@string/lorem_text"
         app:layout_constraintStart_toStartOf="@+id/restaurant_detail_name"
         app:layout_constraintTop_toBottomOf="@+id/restaurant_detail_name" />
 
@@ -44,7 +44,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginTop="8dp"
-        android:text="Description"
+        android:text="@string/description"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -63,14 +63,14 @@
         app:layout_constraintTop_toBottomOf="@+id/textView4">
 
         <TextView
-            android:id="@+id/hotel_detail_desc"
+            android:id="@+id/rest_detail_desc"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/lorem_text" />
     </ScrollView>
 
     <com.google.android.gms.maps.MapView
-        android:id="@+id/hotel_map"
+        android:id="@+id/rest_map"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginBottom="8dp"

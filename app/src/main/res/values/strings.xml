@@ -21,5 +21,7 @@
     <string name="title_activity_hotels">HotelsActivity</string>
     <string name="title_activity_restaurant">RestaurantActivity</string>
     <string name="title_activity_hotel_details">HotelDetailsActivity</string>
+    <string name="title_activity_restaurants_details">Restaurants Details</string>
+    <string name="description">Description</string>
 
 </resources>
