@@ -30,7 +30,11 @@
         <activity
             android:name=".RestaurantActivity"
             android:label="@string/title_activity_restaurant"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".HotelDetailsActivity"
+            android:label="@string/title_activity_hotel_details"
+            android:theme="@style/AppTheme"></activity>
     </application>
 
 </manifest>
