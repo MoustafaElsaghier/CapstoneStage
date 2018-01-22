@@ -19,5 +19,6 @@
     <string name="rating">Rating</string>
     <string name="image_for_item_in_the_list">Image for item in the List</string>
     <string name="title_activity_hotels">HotelsActivity</string>
+    <string name="title_activity_restaurant">RestaurantActivity</string>
 
 </resources>
