@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "342645145036",
+    "firebase_url": "https://capstonestage-11d2a.firebaseio.com",
+    "project_id": "capstonestage-11d2a",
+    "storage_bucket": "capstonestage-11d2a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:342645145036:android:29969a012599e646",
+        "android_client_info": {
+          "package_name": "elsaghier.example.com.capstonestage"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "342645145036-o85ur7l24o0voc0c3ur6fkr36uaed96h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAy_Nkm94xaOd3rCyeGp7XK71pwaVrELVc"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

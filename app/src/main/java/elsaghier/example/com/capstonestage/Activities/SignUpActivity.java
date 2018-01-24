@@ -105,6 +105,18 @@ public class SignUpActivity extends AppCompatActivity {
         if (isValidEmail && isValidPassword) {
             // send data to server
         } else {
+            String email = userEmail.getEditText().getText().toString();
+            if (TextUtils.isEmpty(email))
+                userEmail.setError("Email can't be empty");
+
+            String pass = userPassword.getEditText().getText().toString();
+            if (TextUtils.isEmpty(pass))
+                userPassword.setError("Password can't be empty");
+
+            String confirmPass = userConfirmPassword.getEditText().getText().toString();
+            if (TextUtils.isEmpty(confirmPass))
+                userConfirmPassword.setError("Password Conformation can't be empty");
+
             showErrorDialog(this, "Valid error Fields", "please fix error in fields");
         }
     }
