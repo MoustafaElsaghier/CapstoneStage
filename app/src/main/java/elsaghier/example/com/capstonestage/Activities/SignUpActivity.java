@@ -1,5 +1,6 @@
 package elsaghier.example.com.capstonestage.Activities;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Build;
@@ -144,6 +145,7 @@ public class SignUpActivity extends AppCompatActivity {
         isValidEmail = (!TextUtils.isEmpty(email) &&
                 Patterns.EMAIL_ADDRESS.matcher(email).matches());
         return isValidEmail;
+
     }
 
     boolean passwordValidation(String password) {
@@ -174,10 +176,12 @@ public class SignUpActivity extends AppCompatActivity {
     }
 
     void signUpNewUser(String email, String password) {
+        showProgressDialog(this, "Signing Up", "Save data to server");
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
+                        hideProgressDialog();
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
                             FirebaseUser user = mAuth.getCurrentUser();
@@ -191,6 +195,22 @@ public class SignUpActivity extends AppCompatActivity {
                         }
                     }
                 });
+    }
+
+    ProgressDialog mProgressDialog;
+
+    void showProgressDialog(Context context, String tittle, String message) {
+        mProgressDialog = new ProgressDialog(context);
+        mProgressDialog.setTitle(tittle);
+        mProgressDialog.setMessage(message);
+        mProgressDialog.show();
+    }
+
+    void hideProgressDialog() {
+        if (mProgressDialog != null && mProgressDialog.isShowing()) {
+            mProgressDialog.dismiss();
+            mProgressDialog = null;
+        }
     }
 
 }
