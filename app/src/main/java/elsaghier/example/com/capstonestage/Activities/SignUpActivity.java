@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -12,8 +13,16 @@ import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.Patterns;
+import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 import butterknife.OnClick;
 import elsaghier.example.com.capstonestage.R;
 
@@ -30,6 +39,8 @@ public class SignUpActivity extends AppCompatActivity {
 
     private boolean isValidEmail, isValidPassword;
 
+    // fire base vars
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +48,8 @@ public class SignUpActivity extends AppCompatActivity {
         setContentView(R.layout.activity_sign_up);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        ButterKnife.bind(this);
         userEmail.getEditText().addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -98,11 +111,26 @@ public class SignUpActivity extends AppCompatActivity {
                 }
             }
         });
+
+        // fire base
+        mAuth = FirebaseAuth.getInstance();
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        // Check if user is signed in (non-null) and update UI accordingly.
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+//        updateUI(currentUser);
     }
 
     @OnClick(R.id.signup_BTN)
     void signUp() {
         if (isValidEmail && isValidPassword) {
+            String email, password;
+            email = userEmail.getEditText().getText().toString();
+            password = userPassword.getEditText().getText().toString();
+            signUpNewUser(email, password);
             // send data to server
         } else {
             String email = userEmail.getEditText().getText().toString();
@@ -116,7 +144,6 @@ public class SignUpActivity extends AppCompatActivity {
             String confirmPass = userConfirmPassword.getEditText().getText().toString();
             if (TextUtils.isEmpty(confirmPass))
                 userConfirmPassword.setError("Password Conformation can't be empty");
-
             showErrorDialog(this, "Valid error Fields", "please fix error in fields");
         }
     }
@@ -153,4 +180,25 @@ public class SignUpActivity extends AppCompatActivity {
                 .setIcon(android.R.drawable.ic_dialog_alert)
                 .show();
     }
+
+    void signUpNewUser(String email, String password) {
+        mAuth.createUserWithEmailAndPassword(email, password)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            // Sign in success, update UI with the signed-in user's information
+                            FirebaseUser user = mAuth.getCurrentUser();
+                            Toast.makeText(SignUpActivity.this, "Sign Up Success", Toast.LENGTH_SHORT).show();
+//                            updateUI(user);
+                        } else {
+                            // If sign in fails, display a message to the user.
+                            Toast.makeText(SignUpActivity.this, "Sign Up Failed.",
+                                    Toast.LENGTH_SHORT).show();
+//                            updateUI(null);
+                        }
+                    }
+                });
+    }
+
 }
