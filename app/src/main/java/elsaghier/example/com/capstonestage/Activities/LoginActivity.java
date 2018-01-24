@@ -1,9 +1,12 @@
 package elsaghier.example.com.capstonestage.Activities;
 
+import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -12,6 +15,13 @@ import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.Patterns;
+import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -27,6 +37,7 @@ public class LoginActivity extends AppCompatActivity {
     TextInputLayout userPassword;
 
     boolean isValidEmail, isValidPassword;
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +46,7 @@ public class LoginActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         ButterKnife.bind(this);
+        mAuth = FirebaseAuth.getInstance();
         userEmail.getEditText().addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -89,10 +101,32 @@ public class LoginActivity extends AppCompatActivity {
 
     @OnClick(R.id.BTN_login)
     void login() {
+        showProgressDialog(this, "Authentication Process", "Please wait ...");
         if (isValidEmail && isValidPassword) {
             // handle login request
+            String email = userEmail.getEditText().getText().toString();
+            String password = userPassword.getEditText().getText().toString();
+            mAuth.signInWithEmailAndPassword(email, password)
+                    .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            hideProgressDialog();
+                            if (task.isSuccessful()) {
+                                FirebaseUser user = mAuth.getCurrentUser();
+                                Intent intent = new Intent(LoginActivity.this,HomeActivity.class);
+                                startActivity(intent);
+                                finish();
+
+                            } else {
+                                // If sign in fails, display a message to the user.
+                                Toast.makeText(LoginActivity.this, "Authentication failed.",
+                                        Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    });
         } else {
             showErrorDialog();
+            emptyFields();
         }
     }
 
@@ -129,5 +163,21 @@ public class LoginActivity extends AppCompatActivity {
     void emptyFields() {
         userEmail.getEditText().setText("");
         userPassword.getEditText().setText("");
+    }
+
+    ProgressDialog mProgressDialog;
+
+    void showProgressDialog(Context context, String tittle, String message) {
+        mProgressDialog = new ProgressDialog(context);
+        mProgressDialog.setTitle(tittle);
+        mProgressDialog.setMessage(message);
+        mProgressDialog.show();
+    }
+
+    void hideProgressDialog() {
+        if (mProgressDialog != null && mProgressDialog.isShowing()) {
+            mProgressDialog.dismiss();
+            mProgressDialog = null;
+        }
     }
 }
