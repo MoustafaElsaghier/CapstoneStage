@@ -1,10 +1,12 @@
 package elsaghier.example.com.capstonestage.Fragments;
 
-import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import elsaghier.example.com.capstonestage.R;
 
 /**
  * A placeholder fragment containing a simple view.
