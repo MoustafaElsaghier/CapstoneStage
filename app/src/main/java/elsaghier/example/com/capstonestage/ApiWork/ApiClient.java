@@ -8,10 +8,9 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 
 public class ApiClient {
-
-    private static final String BASE_URL = "https://developers.zomato.com/api/v2.1/search?lat=-33.92127&lon=18.4180213&count=10/";
+//55a1d18014dd0c0dac534c02598a3368
+    private static final String BASE_URL = "https://developers.zomato.com/api/v2.1/";
     private static Retrofit retrofit = null;
-
 
     public static Retrofit getClient() {
         if (retrofit==null) {

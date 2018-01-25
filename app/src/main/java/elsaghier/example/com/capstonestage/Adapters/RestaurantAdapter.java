@@ -74,11 +74,11 @@ public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.Re
         @BindView(R.id.item_img)
         ImageView restaurantImg;
         @BindView(R.id.item_name)
-        private TextView restaurantName;
+        TextView restaurantName;
         @BindView(R.id.iteem_address)
-        private TextView restaurantAddress;
+        TextView restaurantAddress;
         @BindView(R.id.item_price)
-        private TextView restaurantPriceRange;
+        TextView restaurantPriceRange;
 
         RestaurantHolder(View itemView) {
             super(itemView);
