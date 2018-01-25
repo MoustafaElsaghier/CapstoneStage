@@ -40,7 +40,7 @@
             app:layout_constraintWidth_default="wrap" />
 
         <TextView
-            android:id="@+id/item_rating"
+            android:id="@+id/item_price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
@@ -55,7 +55,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="@string/rating"
+            android:text="Price Range"
             app:layout_constraintStart_toStartOf="@+id/item_name"
             app:layout_constraintTop_toBottomOf="@+id/item_name" />
 
