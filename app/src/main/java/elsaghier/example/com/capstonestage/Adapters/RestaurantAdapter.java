@@ -11,11 +11,11 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import elsaghier.example.com.capstonestage.Activities.HotelDetailsActivity;
+import elsaghier.example.com.capstonestage.Activities.RestaurantsDetailsActivity;
 import elsaghier.example.com.capstonestage.Models.RestaurantModel;
 import elsaghier.example.com.capstonestage.R;
 
@@ -26,10 +26,10 @@ import elsaghier.example.com.capstonestage.R;
 
 public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.RestaurantHolder> {
 
-    private ArrayList<RestaurantModel> mData;
+    private List<RestaurantModel> mData;
     private Context mContext;
 
-    public RestaurantAdapter(ArrayList<RestaurantModel> data, Context mContext) {
+    public RestaurantAdapter(List<RestaurantModel> data, Context mContext) {
         this.mData = data;
         this.mContext = mContext;
     }
@@ -54,7 +54,7 @@ public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.Re
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(mContext, HotelDetailsActivity.class);
+                Intent i = new Intent(mContext, RestaurantsDetailsActivity.class);
                 i.putExtra("rest_item", restaurant);
                 mContext.startActivity(i);
             }
