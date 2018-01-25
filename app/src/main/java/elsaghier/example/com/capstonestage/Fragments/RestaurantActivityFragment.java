@@ -33,7 +33,6 @@ public class RestaurantActivityFragment extends Fragment {
     RestaurantInterface anInterface;
     retrofit2.Call<RestaurantResponse> call;
 
-
     public RestaurantActivityFragment() {
     }
 
@@ -49,7 +48,8 @@ public class RestaurantActivityFragment extends Fragment {
 
         layoutManager = new LinearLayoutManager(getContext());
         hotelsRecycler.setLayoutManager(layoutManager);
-        anInterface = ApiClient.getClient().create(RestaurantInterface.class);
+        anInterface = ApiClient.getClient("https://developers.zomato.com/api/v2.1/")
+                .create(RestaurantInterface.class);
         call = anInterface.getRestaurants("application/json",
                 "55a1d18014dd0c0dac534c02598a3368");
         call.enqueue(new Callback<RestaurantResponse>() {
