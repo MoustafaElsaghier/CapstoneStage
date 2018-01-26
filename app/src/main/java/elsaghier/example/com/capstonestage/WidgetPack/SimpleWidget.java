@@ -11,6 +11,8 @@ import elsaghier.example.com.capstonestage.R;
  * Implementation of App Widget functionality.
  */
 public class SimpleWidget extends AppWidgetProvider {
+    static String HOTEL_NAME = "Arafa";
+    static String RESTAURANT_NAME = "Apples's";
 
     static void updateAppWidget(Context context, AppWidgetManager appWidgetManager,
                                 int appWidgetId) {
@@ -18,7 +20,8 @@ public class SimpleWidget extends AppWidgetProvider {
         CharSequence widgetText = context.getString(R.string.appwidget_text);
         // Construct the RemoteViews object
         RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.simple_widget);
-        views.setTextViewText(R.id.appwidget_text, widgetText);
+        views.setTextViewText(R.id.appwidget_restaurant, RESTAURANT_NAME);
+        views.setTextViewText(R.id.appwidget_hotelName, HOTEL_NAME);
 
         // Instruct the widget manager to update the widget
         appWidgetManager.updateAppWidget(appWidgetId, views);

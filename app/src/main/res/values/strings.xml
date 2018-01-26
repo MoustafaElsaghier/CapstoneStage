@@ -30,5 +30,7 @@
     <string name="price_range">Price Range</string>
     <string name="appwidget_text">EXAMPLE</string>
     <string name="add_widget">Add widget</string>
+    <string name="hotel_name">Hotel Name</string>
+    <string name="restaurant_name">Restaurant Name</string>
 
 </resources>
