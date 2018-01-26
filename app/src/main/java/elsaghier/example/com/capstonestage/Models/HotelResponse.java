@@ -6,27 +6,16 @@ import com.google.gson.annotations.SerializedName;
 import java.util.List;
 
 public class HotelResponse {
-
-    @SerializedName("status")
+    @SerializedName("popularity")
     @Expose
-    private String status;
-    @SerializedName("hotels")
-    @Expose
-    private List<HotelModel> hotels = null;
+    private List<HotelModel> popularity = null;
 
-    public String getStatus() {
-        return status;
+    public List<HotelModel> getPopularity() {
+        return popularity;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void setPopularity(List<HotelModel> popularity) {
+        this.popularity = popularity;
     }
 
-    public List<HotelModel> getHotels() {
-        return hotels;
-    }
-
-    public void setHotels(List<HotelModel> hotels) {
-        this.hotels = hotels;
-    }
 }
