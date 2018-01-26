@@ -27,5 +27,6 @@
     <string name="restaurants">Restaurants</string>
     <string name="image_for_restaurants_logo">Image for Restaurants Logo</string>
     <string name="hotels">Hotels</string>
+    <string name="price_range">Price Range</string>
 
 </resources>

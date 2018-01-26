@@ -5,4 +5,5 @@ package elsaghier.example.com.capstonestage.ApiWork;
  */
 
 public interface HotelInterface {
+
 }

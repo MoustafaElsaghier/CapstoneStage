@@ -23,7 +23,7 @@ public class RestaurantResponse implements Serializable {
     private Integer resultsShown;
     @SerializedName("restaurants")
     @Expose
-    private List<RestaurantModel> restaurants = null;
+    private List<RestRes> restaurants = null;
     private final static long serialVersionUID = -6995728231124076920L;
 
     public Integer getResultsFound() {
@@ -50,12 +50,25 @@ public class RestaurantResponse implements Serializable {
         this.resultsShown = resultsShown;
     }
 
-    public List<RestaurantModel> getRestaurants() {
+    public List<RestRes> getRestaurants() {
         return restaurants;
     }
 
-    public void setRestaurants(List<RestaurantModel> restaurants) {
+    public void setRestaurants(List<RestRes> restaurants) {
         this.restaurants = restaurants;
     }
 
+    public class RestRes implements Serializable {
+        @SerializedName("restaurant")
+        private
+        RestaurantModel list = null;
+
+        public RestaurantModel getList() {
+            return list;
+        }
+
+        public void setList(RestaurantModel list) {
+            this.list = list;
+        }
+    }
 }

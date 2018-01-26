@@ -17,6 +17,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import elsaghier.example.com.capstonestage.Activities.RestaurantsDetailsActivity;
 import elsaghier.example.com.capstonestage.Models.RestaurantModel;
+import elsaghier.example.com.capstonestage.Models.RestaurantResponse;
 import elsaghier.example.com.capstonestage.R;
 
 /**
@@ -26,10 +27,10 @@ import elsaghier.example.com.capstonestage.R;
 
 public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.RestaurantHolder> {
 
-    private List<RestaurantModel> mData;
+    private List<RestaurantResponse.RestRes> mData;
     private Context mContext;
 
-    public RestaurantAdapter(List<RestaurantModel> data, Context mContext) {
+    public RestaurantAdapter(List<RestaurantResponse.RestRes> data, Context mContext) {
         this.mData = data;
         this.mContext = mContext;
     }
@@ -42,7 +43,7 @@ public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.Re
 
     @Override
     public void onBindViewHolder(RestaurantHolder holder, int position) {
-        final RestaurantModel restaurant = mData.get(position);
+        final RestaurantModel restaurant = mData.get(position).getList();
         holder.setName(restaurant.getName());
         holder.setAddress(restaurant.getLocation().getAddress());
         holder.setRating(restaurant.getAverageCostForTwo() + " " + restaurant.getCurrency());
