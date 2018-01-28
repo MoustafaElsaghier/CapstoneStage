@@ -9,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import butterknife.BindView;
 import elsaghier.example.com.capstonestage.Adapters.RestaurantAdapter;
@@ -25,7 +26,7 @@ import retrofit2.Response;
  */
 public class RestaurantActivityFragment extends Fragment {
 
-    @BindView(R.id.hotels_recyc)
+    @BindView(R.id.restaurants_recyc)
     RecyclerView hotelsRecycler;
     RecyclerView.LayoutManager layoutManager;
     RestaurantAdapter adapter;
@@ -39,6 +40,8 @@ public class RestaurantActivityFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        Toast.makeText(getContext(), "HH", Toast.LENGTH_SHORT).show();
+
         return inflater.inflate(R.layout.fragment_restaurant, container, false);
     }
 
@@ -56,12 +59,14 @@ public class RestaurantActivityFragment extends Fragment {
             @Override
             public void onResponse(Call<RestaurantResponse> call, Response<RestaurantResponse> response) {
                 adapter = new RestaurantAdapter(response.body().getRestaurants(), getContext());
+                Toast.makeText(getContext(), "HHH"+response.body().getRestaurants().size(), Toast.LENGTH_SHORT).show();
                 hotelsRecycler.setAdapter(adapter);
             }
 
             @Override
             public void onFailure(Call<RestaurantResponse> call, Throwable t) {
                 System.out.println("Error : " + t.getMessage());
+                Toast.makeText(getContext(), "Error", Toast.LENGTH_SHORT).show();
             }
         });
 

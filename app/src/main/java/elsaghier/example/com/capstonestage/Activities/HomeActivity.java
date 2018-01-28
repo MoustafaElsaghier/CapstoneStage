@@ -34,7 +34,6 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onAdLoaded() {
                 Toast.makeText(HomeActivity.this, "Ad Loaded Successful", Toast.LENGTH_SHORT).show();
-                // Code to be executed when an ad finishes loading.
             }
 
             @Override
